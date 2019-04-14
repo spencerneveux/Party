@@ -67,11 +67,12 @@ public class Party {
         while(!done) {
             done = true;
             for (int i = 0; i < size; i++) {
-                // Check if this person has already been removed from the invite list :(
-                if (data[i][i] == -1) removed = true;
                 for (int j = 0; j < size; j++) {
-                    // If that person was removed then don't bother checking
-                    if (removed) break;
+                    // If this person was removed then don't bother checking
+                    if (data[i][i] == -1) {
+                        removed = true;
+                        break;
+                    }
                     // Otherwise get the data to count known/unknown people
                     int value = data[i][j];
                     switch (value) {

@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        String path = "src/description1.txt";
+        String path = "src/description.txt";
         Party party = new Party(path);
         party.findRequirements();
         int[][] filledMatrix = party.fillMatrix();
