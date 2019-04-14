@@ -58,7 +58,7 @@ public class Party {
     }
 
     public int[][] remove(int[][] data) {
-        boolean checked = false;
+        boolean removed = false;
         boolean done = false;
         int unknown = -1;
         int known = 0;
@@ -68,10 +68,10 @@ public class Party {
             done = true;
             for (int i = 0; i < size; i++) {
                 // Check if this person has already been removed from the invite list :(
-                if (data[i][i] == -1) checked = true;
+                if (data[i][i] == -1) removed = true;
                 for (int j = 0; j < size; j++) {
                     // If that person was removed then don't bother checking
-                    if (checked) break;
+                    if (removed) break;
                     // Otherwise get the data to count known/unknown people
                     int value = data[i][j];
                     switch (value) {
@@ -80,7 +80,7 @@ public class Party {
                     }
                 }
                 // If the person doesn't meet the requirements then remove them from the party invite list
-                if (!checked && (known < k1 || unknown < k2)) {
+                if (!removed && (known < k1 || unknown < k2)) {
                     int z = 0;
                     while (z < size) {
                         data[i][z] = -1;
@@ -91,7 +91,7 @@ public class Party {
                     done = false;
                 }
                 // reset variables for next run through
-                unknown = -1; known = 0; checked = false;
+                unknown = -1; known = 0; removed = false;
             }
         }
         return data;
